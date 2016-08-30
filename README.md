@@ -1,22 +1,20 @@
 # oas_cancelacion_semestre
-Este proyecto se realiza para que:
+Este proyecto se realiza para que los Roles puedan:
 
 ESTUDIANTE:
 
-* Cancelación de semestre
-* Retiro voluntario
-* No renovación de matrícula (aplazar semestre).
+* Solicitar Cancelación de semestre
+* Solicitar Retiro voluntario
+* Solicitar No renovación de matrícula (aplazar semestre).
 
 CONSEJO DE FACULTAD:
 
-* Solicitud de un estudiante para cancelación de semestre
-* Solicitud de un estudiante para retiro voluntario por primera vez.
+* Aprobación de Solicitud de un estudiante para cancelación de semestre
+* Aprobación de Solicitud de un estudiante para retiro voluntario por primera vez.
 
 COORDINADOR:
 
-* Cancelación de semestre
-* Retiro voluntario
-* No renovación de matrícula (aplazar semestre).
+* Solicitud Cancelación de semestre de Estudiante
 
 VICERRECTOR ACADÉMICO:
 
