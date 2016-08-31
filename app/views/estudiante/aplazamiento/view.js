@@ -3,8 +3,8 @@
 angular.module('myApp.aplazamiento', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/aplazamiento', {
-    templateUrl: 'views/aplazamiento/view.html',
+  $routeProvider.when('/estudiante/aplazamiento', {
+    templateUrl: 'views/estudiante/aplazamiento/view.html',
     controller: 'AplazamientoCtrl'
   });
 }])

@@ -3,8 +3,8 @@
 angular.module('myApp.retiro', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/retiro', {
-    templateUrl: 'views/retiro/view.html',
+  $routeProvider.when('/estudiante/retiro', {
+    templateUrl: 'views/estudiante/retiro/view.html',
     controller: 'RetiroCtrl'
   });
 }])
