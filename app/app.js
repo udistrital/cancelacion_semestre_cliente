@@ -5,11 +5,14 @@ angular.module('myApp', [
   'ngRoute',
   'myApp.home',
   'myApp.view2',
+  'myApp.estudianteHome',
   'myApp.cancelar',
   'myApp.retiro',
   'myApp.aplazamiento',
   'myApp.version',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'formly',
+  'formlyBootstrap'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');

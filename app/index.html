@@ -20,25 +20,43 @@
   </head>
   <body>
 
-  <!--[if lt IE 7]> <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p> <![endif]-->
+    <!--[if lt IE 7]> <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p> <![endif]-->
 
-  <div ng-view></div>
+    <div ng-view></div>
 
-  <!-- In production use:
+    <!-- Put custom templates here -->
+
+    <script id="custom.html" type="text/ng-template">
+      <div class="form-group">
+        <label for="{{::id}}">{{options.templateOptions.label}}</label>
+        <input class="form-control" id="{{::id}}" name="{{::id}}" ng-model="model[options.key]"/>
+      </div>
+    </script>
+    <script id="example-directive.html" type="text/ng-template">
+      <div class="form-group">
+        <label for="{{::id}}">{{options.templateOptions.label}}</label>
+        <input class="form-control" id="{{::id}}" name="{{::id}}" ng-model="model[options.key]"/>
+      </div>
+    </script>
+
+    <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-  <script src="app.js"></script>
-  <script src="views/home/home.js"></script>
-  <script src="views/view2/view.js"></script>
-  <script src="views/estudiante/home/view.js"></script>
-  <script src="views/estudiante/cancelar/view.js"></script>
-  <script src="views/estudiante/retiro/view.js"></script>
-  <script src="views/estudiante/aplazamiento/view.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
-</body>
+    <script src="bower_components/api-check/dist/api-check.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-formly/dist/formly.min.js"></script>
+    <script src="bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="app.js"></script>
+    <script src="views/home/home.js"></script>
+    <script src="views/view2/view.js"></script>
+    <script src="views/estudiante/home/view.js"></script>
+    <script src="views/estudiante/cancelar/view.js"></script>
+    <script src="views/estudiante/retiro/view.js"></script>
+    <script src="views/estudiante/aplazamiento/view.js"></script>
+    <script src="components/version/version.js"></script>
+    <script src="components/version/version-directive.js"></script>
+    <script src="components/version/interpolate-filter.js"></script>
+  </body>
 </html>
