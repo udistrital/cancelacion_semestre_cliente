@@ -2,7 +2,7 @@
 
 describe('myApp.retiro module', function() {
 
-  beforeEach(module('myApp.view2'));
+  beforeEach(module('myApp.retiro'));
 
   describe('retiro controller', function(){
 
