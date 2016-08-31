@@ -8,7 +8,8 @@ describe('myApp.estudianteHome module', function() {
 
     it('should ....', inject(function($controller) {
       //spec body
-      var homeCtrl = $controller('EstudianteHomeCtrl');
+      var $scope = {};
+      var homeCtrl = $controller('EstudianteHomeCtrl', {$scope: $scope});
       expect(homeCtrl).toBeDefined();
     }));
 

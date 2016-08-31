@@ -8,7 +8,8 @@ describe('myApp.consejoFacultadVerYAprobar module', function() {
 
     it('should ....', inject(function($controller) {
       //spec body
-      var homeCtrl = $controller('ConsejoFacultadVerYAprobarCtrl');
+      var $scope = {};
+      var homeCtrl = $controller('ConsejoFacultadVerYAprobarCtrl', {$scope: $scope});
       expect(homeCtrl).toBeDefined();
     }));
 

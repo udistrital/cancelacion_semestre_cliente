@@ -8,7 +8,8 @@ describe('myApp.aplazamiento module', function() {
 
     it('should ....', inject(function($controller) {
       //spec body
-      var view2Ctrl = $controller('AplazamientoCtrl');
+      var $scope = {};
+      var view2Ctrl = $controller('AplazamientoCtrl', {$scope: $scope});
       expect(view2Ctrl).toBeDefined();
     }));
 

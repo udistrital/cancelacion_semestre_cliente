@@ -8,7 +8,8 @@ describe('myApp.retiro module', function() {
 
     it('should ....', inject(function($controller) {
       //spec body
-      var retiroCtrl = $controller('RetiroCtrl');
+      var $scope = {};
+      var retiroCtrl = $controller('RetiroCtrl', {$scope: $scope});
       expect(retiroCtrl).toBeDefined();
     }));
 

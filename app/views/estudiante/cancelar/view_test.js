@@ -8,7 +8,8 @@ describe('myApp.cancelar module', function() {
 
     it('should ....', inject(function($controller) {
       //spec body
-      var cancelamientoCtrl = $controller('CancelarCtrl');
+      var $scope = {};
+      var cancelamientoCtrl = $controller('CancelarCtrl', {$scope: $scope});
       expect(cancelamientoCtrl).toBeDefined();
     }));
 
