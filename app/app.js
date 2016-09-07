@@ -12,6 +12,8 @@ angular.module('myApp', [
   'myApp.aplazamiento',
   'myApp.consejoFacultadHome',
   'myApp.consejoFacultadVerYAprobar',
+  'myApp.coordinadorHome',
+  'myApp.coordinadorVerYAprobar',
   'myApp.version',
   'ui.bootstrap',
   'formly',
@@ -20,5 +22,7 @@ angular.module('myApp', [
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
 
-  $routeProvider.otherwise({redirectTo: '/home'});
+  $routeProvider.otherwise({
+    redirectTo: '/home'
+  });
 }]);
