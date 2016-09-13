@@ -23,3 +23,6 @@ Este proyecto se realiza para que los Roles puedan:
 
 
 Basado en: Angular Seed https://github.com/angular/angular-seed.git
+Utiliza docker como proveedor de base de datos, ver directorio scripts.
+Uliliza beego como framework de desarrollo de aplicaciones. https://github.com/JorgeUlises/oas_be_cancelacion_semestre
+
