@@ -3,19 +3,29 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.8.1" last-position="0,0" last-zoom="1"
+<dbmodel pgmodeler-ver="0.8.1" last-position="0,62" last-zoom="0.9"
 	 default-schema="public" default-owner="postgres">
+<role name="cancelacion_semestre"
+      encrypted="true"
+      password="sistemasoas">
+	<comment><![CDATA[El usuario usado para las transacciones de cancelacion de semestre]]></comment>
+</role>
+
 <database name="new_database">
 </database>
 
 <schema name="public" protected="true" fill-color="#e1e1e1" sql-disabled="true">
 </schema>
 
+<schema name="academica_estudiantes" rect-visible="true" fill-color="#e1e1e1">
+	<role name="cancelacion_semestre"/>
+</schema>
+
 <table name="tipo_cancelacion_semestre">
-	<schema name="public"/>
-	<role name="postgres"/>
+	<schema name="academica_estudiantes"/>
+	<role name="cancelacion_semestre"/>
 	<comment><![CDATA[especifica el tipo de cancelacion, retiro voluntario o no renovacion de matricula(aplazar semestre)]]></comment>
-	<position x="361" y="415"/>
+	<position x="25.8889" y="277.667"/>
 	<column name="id" not-null="true">
 		<type name="serial"/>
 		<comment><![CDATA[una secuencia que identifica el tipo de cancelacion]]></comment>
@@ -28,16 +38,37 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<type name="character varying" length="200"/>
 		<comment><![CDATA[una descripcion profunda sobre el tipo registrado]]></comment>
 	</column>
-	<constraint name="tipo_cancelacion_semestre_pk" type="pk-constr" table="public.tipo_cancelacion_semestre">
+	<constraint name="tipo_cancelacion_semestre_pk" type="pk-constr" table="academica_estudiantes.tipo_cancelacion_semestre">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="estado_cancelacion_semestre">
+	<schema name="academica_estudiantes"/>
+	<role name="cancelacion_semestre"/>
+	<position x="1418.89" y="292.889"/>
+	<column name="id" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[identificador serial de estado_cancelacion_semestre]]></comment>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[Nombre corto del estado de la cancelacion]]></comment>
+	</column>
+	<column name="descripcion">
+		<type name="smallint"/>
+		<comment><![CDATA[descripcion detallada del significado del estado de la cancelacion]]></comment>
+	</column>
+	<constraint name="estado_cancelacion_semestre_pk" type="pk-constr" table="academica_estudiantes.estado_cancelacion_semestre">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
 
 <table name="cancelacion_semestre">
-	<schema name="public"/>
-	<role name="postgres"/>
+	<schema name="academica_estudiantes"/>
+	<role name="cancelacion_semestre"/>
 	<comment><![CDATA[Se consagran los datos relacionados al evento de cancelar semestre]]></comment>
-	<position x="967" y="399"/>
+	<position x="643.667" y="263"/>
 	<column name="id" not-null="true">
 		<type name="serial"/>
 		<comment><![CDATA[identificador serial del evento]]></comment>
@@ -45,28 +76,32 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="id_tipo" not-null="true">
 		<type name="integer"/>
 	</column>
+	<column name="id_estado" not-null="true">
+		<type name="integer"/>
+		<comment><![CDATA[identificador de la tabla estado_cancelacion_semestre]]></comment>
+	</column>
 	<column name="id_estudiante">
 		<type name="smallint"/>
 		<comment><![CDATA[es el codigo del estudiante que solicita la cancelacion]]></comment>
 	</column>
+	<column name="uid">
+		<type name="integer"/>
+		<comment><![CDATA[Identificador del sistema tuleap]]></comment>
+	</column>
 	<column name="motivo">
-		<type name="character varying" length="200"/>
+		<type name="character varying" length="2000"/>
 		<comment><![CDATA[motivo por el cual se aplaza, cancela semestre, este es rellenado por el estudiante]]></comment>
 	</column>
 	<column name="observaciones">
-		<type name="character varying" length="100"/>
+		<type name="character varying" length="2000"/>
 		<comment><![CDATA[observaciones adicionales al proceso, se llena por el estudiante]]></comment>
 	</column>
 	<column name="num_folios_anexados">
 		<type name="smallint"/>
 		<comment><![CDATA[numero de folios anexados, aparece en el formato de cancelacion]]></comment>
 	</column>
-	<column name="estado_aprobado">
-		<type name="bool"/>
-		<comment><![CDATA[si el evento fue aprobado o no, esto lo llena coordinacion u otro ente competente]]></comment>
-	</column>
 	<column name="motivo_estado_aprobado">
-		<type name="character varying" length="100"/>
+		<type name="character varying" length="2000"/>
 		<comment><![CDATA[el motivo por el cual se aprueba o deniega la solicitud, es llenado por el funcionario correspondiente]]></comment>
 	</column>
 	<column name="fecha_solicitud">
@@ -77,20 +112,31 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<type name="timestamp"/>
 		<comment><![CDATA[fecha en que se aprueba la solicitud]]></comment>
 	</column>
-	<constraint name="cancelacion_semestre_pkey" type="pk-constr" table="public.cancelacion_semestre">
+	<constraint name="cancelacion_semestre_pkey" type="pk-constr" table="academica_estudiantes.cancelacion_semestre">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
 </table>
 
 <constraint name="tipo_cancelacion_semestre_id_tipo_fkey" type="fk-constr" comparison-type="MATCH FULL"
-	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.tipo_cancelacion_semestre" table="public.cancelacion_semestre">
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="academica_estudiantes.tipo_cancelacion_semestre" table="academica_estudiantes.cancelacion_semestre">
 	<columns names="id_tipo" ref-type="src-columns"/>
 	<columns names="id" ref-type="dst-columns"/>
 </constraint>
 
+<constraint name="estado_cancelacion_semestre_id_estado_fkey" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="academica_estudiantes.estado_cancelacion_semestre" table="academica_estudiantes.cancelacion_semestre">
+	<columns names="id_estado" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
 <relationship name="rel_cancelacion_semestre_tipo_cancelacion_semestre" type="relfk"
-	 src-table="public.cancelacion_semestre"
-	 dst-table="public.tipo_cancelacion_semestre"
+	 src-table="academica_estudiantes.cancelacion_semestre"
+	 dst-table="academica_estudiantes.tipo_cancelacion_semestre"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_cancelacion_semestre_estado_cancelacion_semestre" type="relfk"
+	 src-table="academica_estudiantes.cancelacion_semestre"
+	 dst-table="academica_estudiantes.estado_cancelacion_semestre"
 	 src-required="false" dst-required="false"/>
 
 </dbmodel>
