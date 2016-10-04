@@ -29,9 +29,9 @@ angular.module('myApp.coordinadorVerYAprobar', ['ngRoute'])
     }
   }, {
     "type": "input",
-    "key": "Obervaciones",
+    "key": "Observaciones",
     "templateOptions": {
-      "label": "Obervaciones",
+      "label": "Observaciones",
       "required": false,
       "type": "text"
     }

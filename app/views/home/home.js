@@ -9,6 +9,26 @@ angular.module('myApp.home', ['ngRoute'])
   });
 }])
 
-.controller('HomeCtrl', [function() {
-
+.controller('HomeCtrl', ['$scope', function($scope) {
+  $scope.m = {};
+  $scope.mFields = [{
+    "type": "input",
+    "key": "usuario",
+    "templateOptions": {
+      "label": "Usuario",
+      "required": true,
+      "type": "text"
+    }
+  }, {
+    "type": "input",
+    "key": "password",
+    "templateOptions": {
+      "label": "Clave",
+      "required": true,
+      "type": "password"
+    }
+  }];
+  $scope.sendLogin = function() {
+    window.alert();
+  }
 }]);
