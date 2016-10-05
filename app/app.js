@@ -22,17 +22,59 @@ angular.module('myApp', [
     'myApp.version',
     'ui.bootstrap',
     'formly',
-    'formlyBootstrap'
+    'formlyBootstrap',
   ])
   .constant('CONFIG', {
     WS_URL: 'v1',
   })
-  .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+  .config(['$locationProvider', '$routeProvider', '$resourceProvider', function($locationProvider, $routeProvider, $resourceProvider) {
+
     $locationProvider.hashPrefix('!');
 
     $routeProvider.otherwise({
       redirectTo: '/home'
-    });
+    })
+
+    $resourceProvider.defaults.actions = {
+      'query': {
+        method: 'GET',
+        isArray: true,
+        interceptor: {
+          responseError: function(response) {
+            console.log(response)
+            window.alert(response.data)
+          }
+        }
+      },
+      'save': { //stackoverflow.com/questions/20584367/how-to-handle-resource-service-errors-in-angularjs
+        method: 'POST',
+        interceptor: {
+          responseError: function(response) {
+            console.log(response)
+            window.alert(response.data)
+          }
+        }
+      },
+      'get': {
+        method: 'GET',
+        interceptor: {
+          responseError: function(response) {
+            console.log('actionGet', response)
+            window.alert(response.data)
+          }
+        }
+      },
+      'update': {
+        method: 'PUT',
+        interceptor: {
+          responseError: function(response) {
+            console.log(response)
+            window.alert(response.data)
+          }
+        }
+      }
+    }
+
   }]);
 
 //Please see https://www.consolelog.io/angularjs-change-path-without-reloading

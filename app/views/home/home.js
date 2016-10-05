@@ -54,7 +54,8 @@ angular.module('myApp.home', ['ngRoute'])
         }
       }).success(function(data, status, headers, config) {
         data = angular.fromJson(data)
-        $cookies.put('token', data.tokenString)
+        $cookies.remove('tokenString');
+        $cookies.put('tokenString', data.tokenString)
         $location.path('/estudiante').replace()
       }).error(function(data, status, headers, config) {
         console.log(data)

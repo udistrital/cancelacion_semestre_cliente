@@ -1,13 +1,12 @@
 <div class="container">
   <div class="row">
     <h1>Solicitud de Cancelación de Semestre</h1>
-    <formly-form model='m' fields='mFields'>
-      <button type="submit" class="btn btn-default" ng-click="save()">Enviar</button>
+    <formly-form model='m' fields='mFields' form="myForm">
     </formly-form>
-    <button class="btn btn-primary" ng-click="saveCancelacion()" ng-disabled="addTipo_propietarioForm.$invalid">
+    <button class="btn btn-primary" ng-click="save()" ng-disabled="myForm.$invalid">
       Guardar
     </button>
-    <button class="btn" data-ng-click="emptyTipo_propietario()" data-dismiss="modal">
+    <button class="btn" data-ng-click="empty()" data-dismiss="modal">
       Cancelar
     </button>
     <a class="btn btn-info" href="#!/estudiante">Volver</a>

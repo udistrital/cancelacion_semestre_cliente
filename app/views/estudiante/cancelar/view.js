@@ -5,19 +5,27 @@ angular.module('myApp.cancelar', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/estudiante/cancelar', {
     templateUrl: 'views/estudiante/cancelar/view.html',
-    controller: 'CancelarCtrl'
+    controller: 'CancelarCtrl',
+    resolve: {
+      resolvedTipoCancelacion: ['TipoCancelacionFactory', function(TipoCancelacionFactory) {
+        return TipoCancelacionFactory.query()
+      }]
+    }
   });
 }])
 
-.controller('CancelarCtrl', ['$scope', 'CancelarFactory', function($scope, CancelarFactory) {
+.controller('CancelarCtrl', ['$scope', 'CancelarFactory', 'resolvedTipoCancelacion', function($scope, CancelarFactory, resolvedTipoCancelacion) {
+  //console.log('resolvedTipoCancelacion', resolvedTipoCancelacion)
   $scope.m = {}
   $scope.mFields = [{
-    "type": "input",
-    "key": "Tipo",
+    "type": "select",
+    "key": "IdTipo",
     "templateOptions": {
       "label": "Tipo",
       "required": true,
-      "type": "text"
+      "valueProp": "Id",
+      "labelProp": "Tipo",
+      "options": resolvedTipoCancelacion
     }
   }, {
     "type": "input",
@@ -46,52 +54,24 @@ angular.module('myApp.cancelar', ['ngRoute'])
   }]
 
   $scope.save = function() {
-    window.alert()
+    var selectedIdTipo = {
+      "Id": $scope.m.IdTipo,
+      "Tipo": "",
+      "Descripcion": ""
+    }
+    $scope.m.IdTipo = selectedIdTipo;
     CancelarFactory.save($scope.m, function() {
       $scope.m = CancelarFactory.query();
-      $scope.clear();
+      //$scope.clear();
     })
   }
+
 }])
 
 .factory('CancelarFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
-  return $resource(CONFIG.WS_URL + '/cancelacion_semestre/:id', {}, {
-    'query': {
-      method: 'GET',
-      isArray: true,
-      interceptor: {
-        responseError: function(response) {
-          console.log(response)
-          window.alert(response.data)
-        }
-      }
-    },
-    'save': { //stackoverflow.com/questions/20584367/how-to-handle-resource-service-errors-in-angularjs
-      method: 'POST',
-      interceptor: {
-        responseError: function(response) {
-          console.log(response)
-          window.alert(response.data)
-        }
-      }
-    },
-    'get': {
-      method: 'GET',
-      interceptor: {
-        responseError: function(response) {
-          console.log(response)
-          window.alert(response.data)
-        }
-      }
-    },
-    'update': {
-      method: 'PUT',
-      interceptor: {
-        responseError: function(response) {
-          console.log(response)
-          window.alert(response.data)
-        }
-      }
-    }
-  });
+  return $resource(CONFIG.WS_URL + '/cancelacion_semestre/:id');
+}])
+
+.factory('TipoCancelacionFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
+  return $resource(CONFIG.WS_URL + '/tipo_cancelacion_semestre/:id');
 }])
