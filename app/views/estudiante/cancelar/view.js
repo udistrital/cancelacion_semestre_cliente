@@ -9,8 +9,8 @@ angular.module('myApp.cancelar', ['ngRoute'])
   });
 }])
 
-.controller('CancelarCtrl', ['$scope', function($scope) {
-  $scope.m = {};
+.controller('CancelarCtrl', ['$scope', 'CancelarFactory', function($scope, CancelarFactory) {
+  $scope.m = {}
   $scope.mFields = [{
     "type": "input",
     "key": "Tipo",
@@ -43,5 +43,55 @@ angular.module('myApp.cancelar', ['ngRoute'])
       "required": false,
       "type": "number"
     }
-  }];
-}]);
+  }]
+
+  $scope.save = function() {
+    window.alert()
+    CancelarFactory.save($scope.m, function() {
+      $scope.m = CancelarFactory.query();
+      $scope.clear();
+    })
+  }
+}])
+
+.factory('CancelarFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
+  return $resource(CONFIG.WS_URL + '/cancelacion_semestre/:id', {}, {
+    'query': {
+      method: 'GET',
+      isArray: true,
+      interceptor: {
+        responseError: function(response) {
+          console.log(response)
+          window.alert(response.data)
+        }
+      }
+    },
+    'save': { //stackoverflow.com/questions/20584367/how-to-handle-resource-service-errors-in-angularjs
+      method: 'POST',
+      interceptor: {
+        responseError: function(response) {
+          console.log(response)
+          window.alert(response.data)
+        }
+      }
+    },
+    'get': {
+      method: 'GET',
+      interceptor: {
+        responseError: function(response) {
+          console.log(response)
+          window.alert(response.data)
+        }
+      }
+    },
+    'update': {
+      method: 'PUT',
+      interceptor: {
+        responseError: function(response) {
+          console.log(response)
+          window.alert(response.data)
+        }
+      }
+    }
+  });
+}])

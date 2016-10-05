@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
     'ngRoute',
+    'ngResource',
     'ngCookies',
     'myApp.home',
     'myApp.view2',
@@ -33,3 +34,5 @@ angular.module('myApp', [
       redirectTo: '/home'
     });
   }]);
+
+//Please see https://www.consolelog.io/angularjs-change-path-without-reloading

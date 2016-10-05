@@ -14,12 +14,14 @@ angular.module('myApp.home', ['ngRoute'])
   '$http',
   '$httpParamSerializerJQLike',
   '$cookies',
+  '$location',
   'CONFIG',
   function(
     $scope,
     $http,
     $httpParamSerializerJQLike,
     $cookies,
+    $location,
     CONFIG) {
     $scope.m = {}
     $scope.mFields = [{
@@ -53,6 +55,7 @@ angular.module('myApp.home', ['ngRoute'])
       }).success(function(data, status, headers, config) {
         data = angular.fromJson(data)
         $cookies.put('token', data.tokenString)
+        $location.path('/estudiante').replace()
       }).error(function(data, status, headers, config) {
         console.log(data)
         juu.showError(data)
