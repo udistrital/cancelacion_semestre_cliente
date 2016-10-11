@@ -16,12 +16,12 @@ angular.module('myApp.aplazamiento', ['ngRoute'])
 
 .controller('AplazamientoCtrl', [
   '$scope',
-  'AplazamientoFactory',
+  'CancelacionSemestreFactory',
   'resolvedTipoCancelacion',
   '$location',
   function(
     $scope,
-    AplazamientoFactory,
+    CancelacionSemestreFactory,
     resolvedTipoCancelacion,
     $location
   ) {
@@ -70,20 +70,11 @@ angular.module('myApp.aplazamiento', ['ngRoute'])
         "Descripcion": ""
       }
       $scope.m.IdTipo = selectedIdTipo;
-      AplazamientoFactory.save($scope.m, function() {
-        $scope.m = AplazamientoFactory.query()
+      CancelacionSemestreFactory.save($scope.m, function() {
+        $scope.m = CancelacionSemestreFactory.query()
         $location.path('/estudiante/ver').replace()
       })
     }
 
   }
 ])
-
-
-.factory('AplazamientoFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
-  return $resource(CONFIG.WS_URL + '/cancelacion_semestre/:id');
-}])
-
-.factory('TipoCancelacionFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
-  return $resource(CONFIG.WS_URL + '/tipo_cancelacion_semestre/:id');
-}])

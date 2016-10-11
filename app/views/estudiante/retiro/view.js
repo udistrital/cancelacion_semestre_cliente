@@ -16,12 +16,12 @@ angular.module('myApp.retiro', ['ngRoute'])
 
 .controller('RetiroCtrl', [
   '$scope',
-  'RetiroFactory',
+  'CancelacionSemestreFactory',
   'resolvedTipoCancelacion',
   '$location',
   function(
     $scope,
-    RetiroFactory,
+    CancelacionSemestreFactory,
     resolvedTipoCancelacion,
     $location
   ) {
@@ -70,20 +70,11 @@ angular.module('myApp.retiro', ['ngRoute'])
         "Descripcion": ""
       }
       $scope.m.IdTipo = selectedIdTipo;
-      RetiroFactory.save($scope.m, function() {
-        $scope.m = RetiroFactory.query()
+      CancelacionSemestreFactory.save($scope.m, function() {
+        $scope.m = CancelacionSemestreFactory.query()
         $location.path('/estudiante/ver').replace()
       })
     }
 
   }
 ])
-
-
-.factory('RetiroFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
-  return $resource(CONFIG.WS_URL + '/cancelacion_semestre/:id');
-}])
-
-.factory('TipoCancelacionFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
-  return $resource(CONFIG.WS_URL + '/tipo_cancelacion_semestre/:id');
-}])

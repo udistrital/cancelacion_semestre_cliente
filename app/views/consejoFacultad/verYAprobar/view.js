@@ -55,21 +55,10 @@ angular.module('myApp.consejoFacultadVerYAprobar', ['ngRoute'])
     $scope.m = resolvedCancelacionSemestre
 
     $scope.change = function(item, target) {
-      console.log(item, target)
+      //console.log(item, target)
       var id = item.$id
       window.alert(id)
+      item.viewMore = !item.viewMore
     }
   }
 ])
-
-.factory('CancelacionSemestreFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
-  return $resource(CONFIG.WS_URL + '/cancelacion_semestre/:id');
-}])
-
-.factory('TipoCancelacionFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
-  return $resource(CONFIG.WS_URL + '/tipo_cancelacion_semestre/:id');
-}])
-
-.factory('EstadoCancelacionFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
-  return $resource(CONFIG.WS_URL + '/estado_cancelacion_semestre/:id');
-}])

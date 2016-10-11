@@ -55,15 +55,3 @@ angular.module('myApp.estudianteVer', ['ngRoute'])
     $scope.m = resolvedCancelacionSemestre
   }
 ])
-
-.factory('CancelacionSemestreFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
-  return $resource(CONFIG.WS_URL + '/cancelacion_semestre/:id');
-}])
-
-.factory('TipoCancelacionFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
-  return $resource(CONFIG.WS_URL + '/tipo_cancelacion_semestre/:id');
-}])
-
-.factory('EstadoCancelacionFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
-  return $resource(CONFIG.WS_URL + '/estado_cancelacion_semestre/:id');
-}])

@@ -27,6 +27,15 @@ angular.module('myApp', [
   .constant('CONFIG', {
     WS_URL: 'v1',
   })
+  .factory('CancelacionSemestreFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
+    return $resource(CONFIG.WS_URL + '/cancelacion_semestre/:id')
+  }])
+  .factory('TipoCancelacionFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
+    return $resource(CONFIG.WS_URL + '/tipo_cancelacion_semestre/:id')
+  }])
+  .factory('EstadoCancelacionFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
+    return $resource(CONFIG.WS_URL + '/estado_cancelacion_semestre/:id')
+  }])
   .config(['$locationProvider', '$routeProvider', '$resourceProvider', function($locationProvider, $routeProvider, $resourceProvider) {
 
     $locationProvider.hashPrefix('!');
@@ -75,6 +84,6 @@ angular.module('myApp', [
       }
     }
 
-  }]);
+  }])
 
 //Please see https://www.consolelog.io/angularjs-change-path-without-reloading

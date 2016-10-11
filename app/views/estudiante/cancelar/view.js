@@ -16,12 +16,12 @@ angular.module('myApp.cancelar', ['ngRoute'])
 
 .controller('CancelarCtrl', [
   '$scope',
-  'CancelarFactory',
+  'CancelacionSemestreFactory',
   'resolvedTipoCancelacion',
   '$location',
   function(
     $scope,
-    CancelarFactory,
+    CancelacionSemestreFactory,
     resolvedTipoCancelacion,
     $location
   ) {
@@ -70,19 +70,11 @@ angular.module('myApp.cancelar', ['ngRoute'])
         "Descripcion": ""
       }
       $scope.m.IdTipo = selectedIdTipo;
-      CancelarFactory.save($scope.m, function() {
-        $scope.m = CancelarFactory.query()
+      CancelacionSemestreFactory.save($scope.m, function() {
+        $scope.m = CancelacionSemestreFactory.query()
         $location.path('/estudiante/ver').replace()
       })
     }
 
   }
 ])
-
-.factory('CancelarFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
-  return $resource(CONFIG.WS_URL + '/cancelacion_semestre/:id');
-}])
-
-.factory('TipoCancelacionFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
-  return $resource(CONFIG.WS_URL + '/tipo_cancelacion_semestre/:id');
-}])
