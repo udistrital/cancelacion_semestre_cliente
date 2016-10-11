@@ -7,14 +7,14 @@ angular.module('myApp.estudianteVer', ['ngRoute'])
     templateUrl: 'views/estudiante/ver/view.html',
     controller: 'EstudianteVerCtrl',
     resolve: {
-      resolvedCancelacionSemestre: ['CancelacionSemestreFactory', function(CancelacionSemestreFactory) {
-        return CancelacionSemestreFactory.query()
-      }],
       resolvedTipoCancelacion: ['TipoCancelacionFactory', function(TipoCancelacionFactory) {
         return TipoCancelacionFactory.query()
       }],
       resolvedEstadoCancelacion: ['EstadoCancelacionFactory', function(EstadoCancelacionFactory) {
         return EstadoCancelacionFactory.query()
+      }],
+      resolvedCancelacionSemestre: ['CancelacionSemestreFactory', function(CancelacionSemestreFactory) {
+        return CancelacionSemestreFactory.query()
       }]
     }
   });
@@ -23,15 +23,15 @@ angular.module('myApp.estudianteVer', ['ngRoute'])
 .controller('EstudianteVerCtrl', [
   '$scope',
   '$filter',
-  'resolvedCancelacionSemestre',
   'resolvedTipoCancelacion',
   'resolvedEstadoCancelacion',
+  'resolvedCancelacionSemestre',
   function(
     $scope,
     $filter,
-    resolvedCancelacionSemestre,
     resolvedTipoCancelacion,
-    resolvedEstadoCancelacion
+    resolvedEstadoCancelacion,
+    resolvedCancelacionSemestre
   ) {
     $scope.m = {}
     angular.forEach(resolvedCancelacionSemestre, function(row, index) {
