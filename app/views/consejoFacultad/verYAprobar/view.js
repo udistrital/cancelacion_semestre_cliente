@@ -5,43 +5,71 @@ angular.module('myApp.consejoFacultadVerYAprobar', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/consejoFacultad/verYAprobar', {
     templateUrl: 'views/consejoFacultad/verYAprobar/view.html',
-    controller: 'ConsejoFacultadVerYAprobarCtrl'
+    controller: 'consejoFacultadVerYAprobarCtrl',
+    resolve: {
+      resolvedTipoCancelacion: ['TipoCancelacionFactory', function(TipoCancelacionFactory) {
+        return TipoCancelacionFactory.query()
+      }],
+      resolvedEstadoCancelacion: ['EstadoCancelacionFactory', function(EstadoCancelacionFactory) {
+        return EstadoCancelacionFactory.query()
+      }],
+      resolvedCancelacionSemestre: ['CancelacionSemestreFactory', function(CancelacionSemestreFactory) {
+        return CancelacionSemestreFactory.query()
+      }]
+    }
   });
 }])
 
-.controller('ConsejoFacultadVerYAprobarCtrl', ['$scope', function($scope) {
-  $scope.m = {};
-  $scope.mFields = [{
-    "type": "input",
-    "key": "Tipo",
-    "templateOptions": {
-      "label": "Tipo",
-      "required": true,
-      "type": "text"
+.controller('consejoFacultadVerYAprobarCtrl', [
+  '$scope',
+  '$filter',
+  'resolvedTipoCancelacion',
+  'resolvedEstadoCancelacion',
+  'resolvedCancelacionSemestre',
+  function(
+    $scope,
+    $filter,
+    resolvedTipoCancelacion,
+    resolvedEstadoCancelacion,
+    resolvedCancelacionSemestre
+  ) {
+    $scope.m = {}
+    angular.forEach(resolvedCancelacionSemestre, function(row, index) {
+      angular.forEach(row, function(value, key) {
+        var filtro = null
+        switch (key) {
+          case 'IdTipo':
+            filtro = $filter('filter')(resolvedTipoCancelacion, value)
+            break;
+          case 'IdEstado':
+            filtro = $filter('filter')(resolvedEstadoCancelacion, value)
+            break;
+          default:
+
+        }
+        if (filtro !== null) {
+          resolvedCancelacionSemestre[index][key] = filtro[0]
+        }
+      })
+    })
+    $scope.m = resolvedCancelacionSemestre
+
+    $scope.change = function(item, target) {
+      console.log(item, target)
+      var id = item.$id
+      window.alert(id)
     }
-  }, {
-    "type": "input",
-    "key": "Motivo",
-    "templateOptions": {
-      "label": "Motivo",
-      "required": false,
-      "type": "text"
-    }
-  }, {
-    "type": "input",
-    "key": "Observaciones",
-    "templateOptions": {
-      "label": "Observaciones",
-      "required": false,
-      "type": "text"
-    }
-  }, {
-    "type": "input",
-    "key": "NumFoliosAnexados",
-    "templateOptions": {
-      "label": "Número de Folios Anexados",
-      "required": false,
-      "type": "number"
-    }
-  }];
-}]);
+  }
+])
+
+.factory('CancelacionSemestreFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
+  return $resource(CONFIG.WS_URL + '/cancelacion_semestre/:id');
+}])
+
+.factory('TipoCancelacionFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
+  return $resource(CONFIG.WS_URL + '/tipo_cancelacion_semestre/:id');
+}])
+
+.factory('EstadoCancelacionFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
+  return $resource(CONFIG.WS_URL + '/estado_cancelacion_semestre/:id');
+}])
