@@ -3,11 +3,11 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Fecha Aprobación</th>
+            <th>Tipo</th>
+            <th>Estado</th>
             <th>Fecha Solicitud</th>
-            <th>Id Estado</th>
+            <th>Fecha Aprobación</th>
             <th>Id Estudiante</th>
-            <th>Id Tipo</th>
             <th>Motivo</th>
             <th>Motivo Estado Aprobado</th>
             <th>Num Folios</th>
@@ -17,11 +17,11 @@
     <tbody>
         <tr ng-repeat="row in m">
             <td>{{ row.Id }}</td>
-            <td>{{ row.FechaAprobacion }}</td>
+            <td>{{ row.IdTipo.Tipo }}</td>
+            <td>{{ row.IdEstado.Estado }}</td>
             <td>{{ row.FechaSolicitud }}</td>
-            <td>{{ row.IdEstado.Id }}</td>
+            <td>{{ row.FechaAprobacion }}</td>
             <td>{{ row.IdEstudiante }}</td>
-            <td>{{ row.IdTipo.Id }}</td>
             <td>{{ row.Motivo }}</td>
             <td>{{ row.MotivoEstadoAprobado }}</td>
             <td>{{ row.NumFoliosAnexados }}</td>
