@@ -14,59 +14,70 @@ angular.module('myApp.cancelar', ['ngRoute'])
   });
 }])
 
-.controller('CancelarCtrl', ['$scope', 'CancelarFactory', 'resolvedTipoCancelacion', function($scope, CancelarFactory, resolvedTipoCancelacion) {
-  //console.log('resolvedTipoCancelacion', resolvedTipoCancelacion)
-  $scope.m = {}
-  $scope.mFields = [{
-    "type": "select",
-    "key": "IdTipo",
-    "templateOptions": {
-      "label": "Tipo",
-      "required": true,
-      "valueProp": "Id",
-      "labelProp": "Tipo",
-      "options": resolvedTipoCancelacion
-    }
-  }, {
-    "type": "input",
-    "key": "Motivo",
-    "templateOptions": {
-      "label": "Motivo",
-      "required": false,
-      "type": "text"
-    }
-  }, {
-    "type": "input",
-    "key": "Observaciones",
-    "templateOptions": {
-      "label": "Observaciones",
-      "required": false,
-      "type": "text"
-    }
-  }, {
-    "type": "input",
-    "key": "NumFoliosAnexados",
-    "templateOptions": {
-      "label": "Número de Folios Anexados",
-      "required": false,
-      "type": "number"
-    }
-  }]
+.controller('CancelarCtrl', [
+  '$scope',
+  'CancelarFactory',
+  'resolvedTipoCancelacion',
+  '$location',
+  function(
+    $scope,
+    CancelarFactory,
+    resolvedTipoCancelacion,
+    $location
+  ) {
+    //console.log('resolvedTipoCancelacion', resolvedTipoCancelacion)
+    $scope.m = {}
+    $scope.mFields = [{
+      "type": "select",
+      "key": "IdTipo",
+      "templateOptions": {
+        "label": "Tipo",
+        "required": true,
+        "valueProp": "Id",
+        "labelProp": "Tipo",
+        "options": resolvedTipoCancelacion
+      }
+    }, {
+      "type": "input",
+      "key": "Motivo",
+      "templateOptions": {
+        "label": "Motivo",
+        "required": false,
+        "type": "text"
+      }
+    }, {
+      "type": "input",
+      "key": "Observaciones",
+      "templateOptions": {
+        "label": "Observaciones",
+        "required": false,
+        "type": "text"
+      }
+    }, {
+      "type": "input",
+      "key": "NumFoliosAnexados",
+      "templateOptions": {
+        "label": "Número de Folios Anexados",
+        "required": false,
+        "type": "number"
+      }
+    }]
 
-  $scope.save = function() {
-    var selectedIdTipo = {
-      "Id": $scope.m.IdTipo,
-      "Tipo": "",
-      "Descripcion": ""
+    $scope.save = function() {
+      var selectedIdTipo = {
+        "Id": $scope.m.IdTipo,
+        "Tipo": "",
+        "Descripcion": ""
+      }
+      $scope.m.IdTipo = selectedIdTipo;
+      CancelarFactory.save($scope.m, function() {
+        $scope.m = CancelarFactory.query()
+        $location.path('/estudiante/ver').replace()
+      })
     }
-    $scope.m.IdTipo = selectedIdTipo;
-    CancelarFactory.save($scope.m, function() {
-      $scope.m = CancelarFactory.query();
-      //$scope.clear();
-    })
+
   }
-
-}])
+])
 
 .factory('CancelarFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
   return $resource(CONFIG.WS_URL + '/cancelacion_semestre/:id');

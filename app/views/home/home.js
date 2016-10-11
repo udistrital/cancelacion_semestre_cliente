@@ -22,7 +22,8 @@ angular.module('myApp.home', ['ngRoute'])
     $httpParamSerializerJQLike,
     $cookies,
     $location,
-    CONFIG) {
+    CONFIG
+  ) {
     $scope.m = {}
     $scope.mFields = [{
       'type': 'input',
