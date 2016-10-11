@@ -26,12 +26,14 @@ angular.module('myApp.consejoFacultadVerYAprobar', ['ngRoute'])
   'resolvedTipoCancelacion',
   'resolvedEstadoCancelacion',
   'resolvedCancelacionSemestre',
+  'CancelacionSemestreFactory',
   function(
     $scope,
     $filter,
     resolvedTipoCancelacion,
     resolvedEstadoCancelacion,
-    resolvedCancelacionSemestre
+    resolvedCancelacionSemestre,
+    CancelacionSemestreFactory
   ) {
     $scope.m = {}
     angular.forEach(resolvedCancelacionSemestre, function(row, index) {
@@ -55,10 +57,20 @@ angular.module('myApp.consejoFacultadVerYAprobar', ['ngRoute'])
     $scope.m = resolvedCancelacionSemestre
 
     $scope.change = function(item, target) {
-      //console.log(item, target)
+      console.log(item, target)
       var id = item.$id
-      window.alert(id)
-      item.viewMore = !item.viewMore
+      var row = item.row
+      row.IdEstado = $filter('filter')(resolvedEstadoCancelacion, '0')[0]
+      CancelacionSemestreFactory.update({
+          id: id
+        }, row,
+        function(response) {
+          console.log(response)
+            //$scope.m = CancelacionSemestreFactory.query()
+            //$location.path('/estudiante/ver').replace()
+          window.alert(id)
+            //item.statusChange = !item.statusChange
+        })
     }
   }
 ])
