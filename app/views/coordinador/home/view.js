@@ -6,7 +6,7 @@ angular.module('myApp.coordinadorHome', ['ngRoute'])
   $routeProvider.when('/coordinador', {
     templateUrl: 'views/coordinador/home/view.html',
     controller: 'CoordinadorHomeCtrl'
-  });
+  })
 }])
 
 .controller('CoordinadorHomeCtrl', ['$scope', function($scope) {
@@ -43,5 +43,5 @@ angular.module('myApp.coordinadorHome', ['ngRoute'])
       "required": false,
       "type": "number"
     }
-  }];
-}]);
+  }]
+}])
