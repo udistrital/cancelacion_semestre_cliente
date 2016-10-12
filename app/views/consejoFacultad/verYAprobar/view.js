@@ -6,36 +6,37 @@ angular.module('myApp.consejoFacultadVerYAprobar', ['ngRoute'])
   $routeProvider.when('/consejoFacultad/verYAprobar', {
     templateUrl: 'views/consejoFacultad/verYAprobar/view.html',
     controller: 'consejoFacultadVerYAprobarCtrl',
-    resolve: {
+    resolve: { //http://www.jvandemo.com/how-to-resolve-angularjs-resources-with-ui-router/
+      resolvedCancelacionSemestre: ['CancelacionSemestreFactory', function(CancelacionSemestreFactory) {
+        return CancelacionSemestreFactory.query().$promise
+      }],
       resolvedTipoCancelacion: ['TipoCancelacionFactory', function(TipoCancelacionFactory) {
-        return TipoCancelacionFactory.query()
+        return TipoCancelacionFactory.query().$promise
       }],
       resolvedEstadoCancelacion: ['EstadoCancelacionFactory', function(EstadoCancelacionFactory) {
-        return EstadoCancelacionFactory.query()
-      }],
-      resolvedCancelacionSemestre: ['CancelacionSemestreFactory', function(CancelacionSemestreFactory) {
-        return CancelacionSemestreFactory.query()
+        return EstadoCancelacionFactory.query().$promise
       }]
-    }
-  });
+    },
+  })
 }])
 
 .controller('consejoFacultadVerYAprobarCtrl', [
   '$scope',
   '$filter',
+  'CancelacionSemestreFactory',
+  'resolvedCancelacionSemestre',
   'resolvedTipoCancelacion',
   'resolvedEstadoCancelacion',
-  'resolvedCancelacionSemestre',
-  'CancelacionSemestreFactory',
   function(
     $scope,
     $filter,
-    resolvedTipoCancelacion,
-    resolvedEstadoCancelacion,
+    CancelacionSemestreFactory,
     resolvedCancelacionSemestre,
-    CancelacionSemestreFactory
+    resolvedTipoCancelacion,
+    resolvedEstadoCancelacion
   ) {
     $scope.m = {}
+    console.log('aqui', resolvedCancelacionSemestre, resolvedTipoCancelacion, resolvedEstadoCancelacion)
     angular.forEach(resolvedCancelacionSemestre, function(row, index) {
       angular.forEach(row, function(value, key) {
         var filtro = null
@@ -57,20 +58,18 @@ angular.module('myApp.consejoFacultadVerYAprobar', ['ngRoute'])
     $scope.m = resolvedCancelacionSemestre
 
     $scope.change = function(item, target) {
-      console.log(item, target)
+      //console.log(item, target)
       var id = item.$id
       var row = item.row
       row.IdEstado = $filter('filter')(resolvedEstadoCancelacion, '0')[0]
       CancelacionSemestreFactory.update({
-          id: id
-        }, row,
-        function(response) {
-          console.log(response)
-            //$scope.m = CancelacionSemestreFactory.query()
-            //$location.path('/estudiante/ver').replace()
-          window.alert(id)
-            //item.statusChange = !item.statusChange
-        })
+        id: id
+      }, row, function() {
+        //$scope.m = CancelacionSemestreFactory.query()
+        //$location.path('/estudiante/ver').replace()
+        juu.showMessage('Actualización correcta')
+          //item.statusChange = !item.statusChange
+      })
     }
   }
 ])
