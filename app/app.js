@@ -36,54 +36,63 @@ angular.module('myApp', [
   .factory('EstadoCancelacionFactory', ['$resource', 'CONFIG', function($resource, CONFIG) {
     return $resource(CONFIG.WS_URL + '/estado_cancelacion_semestre/:id')
   }])
-  .config(['$locationProvider', '$routeProvider', '$resourceProvider', function($locationProvider, $routeProvider, $resourceProvider) {
+  .config([
+    '$locationProvider',
+    '$routeProvider',
+    '$resourceProvider',
+    function(
+      $locationProvider,
+      $routeProvider,
+      $resourceProvider
+    ) {
 
-    $locationProvider.hashPrefix('!');
+      $locationProvider.hashPrefix('!');
 
-    $routeProvider.otherwise({
-      redirectTo: '/home'
-    })
+      $routeProvider.otherwise({
+        redirectTo: '/home'
+      })
 
-    $resourceProvider.defaults.actions = {
-      'query': {
-        method: 'GET',
-        isArray: true,
-        interceptor: {
-          responseError: function(response) {
-            console.log(response)
-            window.alert(response.data)
+      $resourceProvider.defaults.actions = {
+        'query': {
+          method: 'GET',
+          isArray: true,
+          interceptor: {
+            responseError: function(response) {
+              console.log('actionQuery', response)
+              juu.showError(response)
+            }
           }
-        }
-      },
-      'save': { //stackoverflow.com/questions/20584367/how-to-handle-resource-service-errors-in-angularjs
-        method: 'POST',
-        interceptor: {
-          responseError: function(response) {
-            console.log(response)
-            window.alert(response.data)
+        },
+        'save': { //stackoverflow.com/questions/20584367/how-to-handle-resource-service-errors-in-angularjs
+          method: 'POST',
+          interceptor: {
+            responseError: function(response) {
+              console.log('actionSave', response)
+              juu.showError(response)
+            }
           }
-        }
-      },
-      'get': {
-        method: 'GET',
-        interceptor: {
-          responseError: function(response) {
-            console.log('actionGet', response)
-            window.alert(response.data)
+        },
+        'get': {
+          method: 'GET',
+          interceptor: {
+            responseError: function(response) {
+              console.log('actionGet', response)
+              juu.showError(response)
+            }
           }
-        }
-      },
-      'update': {
-        method: 'PUT',
-        interceptor: {
-          responseError: function(response) {
-            console.log(response)
-            window.alert(response.data)
+        },
+        'update': {
+          method: 'PUT',
+          interceptor: {
+            responseError: function(response) {
+              console.log('actionUpdate', response)
+              juu.showError(response)
+            }
           }
         }
       }
-    }
 
-  }])
+    }
+  ])
 
 //Please see https://www.consolelog.io/angularjs-change-path-without-reloading

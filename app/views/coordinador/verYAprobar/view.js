@@ -36,7 +36,7 @@ angular.module('myApp.coordinadorVerYAprobar', ['ngRoute'])
     resolvedEstadoCancelacion
   ) {
     $scope.m = {}
-    console.log('aqui', resolvedCancelacionSemestre, resolvedTipoCancelacion, resolvedEstadoCancelacion)
+      //console.log('aqui', resolvedCancelacionSemestre, resolvedTipoCancelacion, resolvedEstadoCancelacion)
     angular.forEach(resolvedCancelacionSemestre, function(row, index) {
       angular.forEach(row, function(value, key) {
         var filtro = null
