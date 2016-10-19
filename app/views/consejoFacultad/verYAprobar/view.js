@@ -5,7 +5,7 @@ angular.module('myApp.consejoFacultadVerYAprobar', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/consejoFacultad/verYAprobar', {
     templateUrl: 'views/consejoFacultad/verYAprobar/view.html',
-    controller: 'consejoFacultadVerYAprobarCtrl',
+    controller: 'ConsejoFacultadVerYAprobarCtrl',
     resolve: { //http://www.jvandemo.com/how-to-resolve-angularjs-resources-with-ui-router/
       resolvedCancelacionSemestre: ['CancelacionSemestreFactory', function(CancelacionSemestreFactory) {
         return CancelacionSemestreFactory.query().$promise

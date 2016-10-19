@@ -17,7 +17,7 @@
     "protractor": "^3.2.2"
   },
   "scripts": {
-    "run": "sudo systemctl start nginx && sudo systemctl start docker && sudo docker start 07983383bb4d && cd /home/jorge2/src/github.com/juusechec/oas_be_cancelacion_semestre; bee run",	  
+    "run": "sudo systemctl start nginx && sudo systemctl start docker && sudo docker start 07983383bb4d && cd $GOPATH/src/github.com/juusechec/oas_be_cancelacion_semestre; bee run",	  
     "postinstall": "bower install",
 
     "prestart": "npm install",
