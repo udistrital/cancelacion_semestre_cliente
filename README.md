@@ -46,7 +46,10 @@ $ npm run test-single-run
 ó
 $ npm test
 ```
-
+4) Desplegar la aplicación con npm scripts
+```bash
+$ npm run-script run
+```
 
 #INFORMACIÓN
 ------------
