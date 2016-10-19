@@ -30,7 +30,7 @@ Este proyecto se realiza para que los Roles puedan:
 Para desarrollar u obtener localmente se puede ejecutar:
 1) Clonar el repositorio:
 ```bash
-$ git clone --depth=1 https://github.com/JorgeUlises/oas_fe_cancelacion_semestre
+$ git clone --depth=1 https://github.com/juusechec/oas_fe_cancelacion_semestre
 ```
 
 2) Ingresar al directorio y resolver los requerimientos de desarrollo del api JS.
@@ -52,5 +52,5 @@ $ npm test
 ------------
 * Basado en Angular Seed https://github.com/angular/angular-seed.git
 * Viene pre configurado con pruebas unitarias. Estos están escritos en el Jasmine https://jasmine.github.io, se ejecuta con el Karma Test Runner https://karma-runner.github.io/1.0/index.html.
-* Uliliza beego como framework de desarrollo para el back-end. https://github.com/JorgeUlises/oas_be_cancelacion_semestre
+* Uliliza beego como framework de desarrollo para el back-end. https://github.com/juusechec/oas_be_cancelacion_semestre
 
