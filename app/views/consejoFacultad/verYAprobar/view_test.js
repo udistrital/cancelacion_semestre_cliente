@@ -2,18 +2,70 @@
 
 describe('myApp.consejoFacultadVerYAprobar module', function() {
 
-  beforeEach(module('myApp.consejoFacultadVerYAprobar'));
+  var resolvedTipoCancelacion,
+    resolvedEstadoCancelacion,
+    resolvedCancelacionSemestre,
+    $resource,
+    $controller,
+    $filter
 
-  beforeEach(module('CancelacionSemestreFactory'));
-  beforeEach(module('resolvedCancelacionSemestre'));
-  beforeEach(module('resolvedTipoCancelacion'));
-  beforeEach(module('resolvedEstadoCancelacion'));
+  beforeEach(function() {
+    module('myApp.consejoFacultadVerYAprobar')
+
+    inject(function(_$resource_, _$controller_, _$filter_) {
+      $resource = _$resource_
+      $controller = _$controller_
+      $filter = _$filter_
+    })
+
+    resolvedTipoCancelacion = [{
+      "Descripcion": "string",
+      "Id": 0,
+      "Tipo": "string"
+    }, {
+      "Id": 1,
+      "Tipo": "tipo1",
+      "Descripcion": "desc tipo1"
+    }]
+
+    resolvedEstadoCancelacion = [{
+      "Id": 1,
+      "Estado": "primer estado",
+      "Descripcion": "desc primer estado"
+    }, {
+      "Id": 2,
+      "Estado": "primer estado",
+      "Descripcion": "desc primer estado"
+    }]
+
+    resolvedCancelacionSemestre = [{
+      "Id": 0,
+      "IdEstado": {
+        "Descripcion": "string",
+        "Estado": "string",
+        "Id": 0
+      },
+      "IdEstudiante": {},
+      "IdTipo": {
+        "Descripcion": "string",
+        "Id": 0,
+        "Tipo": "string"
+      },
+      "Motivo": "string",
+      "MotivoEstadoAprobado": "string",
+      "NumFoliosAnexados": {},
+      "Observaciones": "string",
+      "Uid": 0
+    }]
+  })
 
   describe('consejoFacultadVerYAprobar controller', function() {
 
-    it('should ....', inject(function($controller, $filter) {
+    it('should ....', inject(function() {
       //spec body
       var $scope = {};
+
+      var CancelacionSemestreFactory = $resource('http://localhost/oas_cancelacion_semestre/v1/cancelacion_semestre/:id')
 
       var homeCtrl = $controller('ConsejoFacultadVerYAprobarCtrl', {
         $scope: $scope,
@@ -23,6 +75,7 @@ describe('myApp.consejoFacultadVerYAprobar module', function() {
         resolvedTipoCancelacion: resolvedTipoCancelacion,
         resolvedEstadoCancelacion: resolvedEstadoCancelacion,
       });
+
       expect(homeCtrl).toBeDefined();
     }));
 

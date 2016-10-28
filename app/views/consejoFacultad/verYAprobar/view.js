@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.consejoFacultadVerYAprobar', ['ngRoute'])
+angular.module('myApp.consejoFacultadVerYAprobar', ['ngRoute', 'ngResource'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/consejoFacultad/verYAprobar', {
@@ -20,7 +20,7 @@ angular.module('myApp.consejoFacultadVerYAprobar', ['ngRoute'])
   })
 }])
 
-.controller('consejoFacultadVerYAprobarCtrl', [
+.controller('ConsejoFacultadVerYAprobarCtrl', [
   '$scope',
   '$filter',
   'CancelacionSemestreFactory',
