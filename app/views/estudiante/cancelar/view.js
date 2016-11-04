@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.cancelar', ['ngRoute'])
+angular.module('myApp.cancelar', ['ngRoute', 'ngResource'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/estudiante/cancelar', {

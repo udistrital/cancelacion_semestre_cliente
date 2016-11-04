@@ -41,7 +41,8 @@ angular.module('myApp.home', ['ngRoute'])
         'required': true,
         'type': 'password'
       }
-    }];
+    }]
+
     $scope.sendLogin = function() {
       var completeUrl = CONFIG.WS_URL + '/user/getToken'
       $http({
@@ -55,14 +56,14 @@ angular.module('myApp.home', ['ngRoute'])
         }
       }).success(function(data, status, headers, config) {
         data = angular.fromJson(data)
-        $cookies.remove('tokenString');
+        $cookies.remove('tokenString')
         $cookies.put('tokenString', data.tokenString)
         $location.path('/estudiante').replace()
       }).error(function(data, status, headers, config) {
         console.log(data)
         juu.showError(data)
         $scope.status = status
-      });
+      })
 
     }
   }

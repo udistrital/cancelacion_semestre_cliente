@@ -1,17 +1,19 @@
-'use strict';
+'use strict'
 
-describe('myApp.vicerrectorAcademicoVerYAprobar module', function() {
+describe('myApp.vicerrectorAcademicoCancelarSemAnterior module', function() {
 
-  beforeEach(module('myApp.vicerrectorAcademicoVerYAprobar'));
+  beforeEach(module('myApp.vicerrectorAcademicoCancelarSemAnterior'));
 
-  describe('vicerrectorAcademicoVerYAprobar controller', function(){
+  describe('vicerrectorAcademicoCancelarSemAnterior controller', function() {
 
     it('should ....', inject(function($controller) {
       //spec body
-      var $scope = {};
-      var homeCtrl = $controller('VicerrectorAcademicoVerYAprobarCtrl', {$scope: $scope});
+      var $scope = {}
+      var homeCtrl = $controller('VicerrectorAcademicoCancelarSemAnteriorCtrl', {
+        $scope: $scope
+      });
       expect(homeCtrl).toBeDefined();
-    }));
+    }))
 
-  });
-});
+  })
+})

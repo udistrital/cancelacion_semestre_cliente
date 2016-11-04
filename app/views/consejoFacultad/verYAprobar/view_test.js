@@ -63,21 +63,21 @@ describe('myApp.consejoFacultadVerYAprobar module', function() {
 
     it('should ....', inject(function() {
       //spec body
-      var $scope = {};
+      var $scope = {}
 
       var CancelacionSemestreFactory = $resource('http://localhost/oas_cancelacion_semestre/v1/cancelacion_semestre/:id')
 
-      var homeCtrl = $controller('ConsejoFacultadVerYAprobarCtrl', {
+      var myCtrl = $controller('ConsejoFacultadVerYAprobarCtrl', {
         $scope: $scope,
         $filter: $filter,
         CancelacionSemestreFactory: CancelacionSemestreFactory,
         resolvedCancelacionSemestre: resolvedCancelacionSemestre,
         resolvedTipoCancelacion: resolvedTipoCancelacion,
         resolvedEstadoCancelacion: resolvedEstadoCancelacion,
-      });
+      })
 
-      expect(homeCtrl).toBeDefined();
-    }));
+      expect(myCtrl).toBeDefined();
+    }))
 
-  });
-});
+  })
+})

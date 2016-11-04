@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.coordinadorVerYAprobar', ['ngRoute'])
+angular.module('myApp.coordinadorVerYAprobar', ['ngRoute', 'ngResource'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/coordinador/verYAprobar', {

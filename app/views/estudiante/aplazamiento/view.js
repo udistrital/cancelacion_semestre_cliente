@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.aplazamiento', ['ngRoute'])
+angular.module('myApp.aplazamiento', ['ngRoute', 'ngResource'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/estudiante/aplazamiento', {

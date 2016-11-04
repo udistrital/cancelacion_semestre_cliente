@@ -1,17 +1,20 @@
-'use strict';
+'use strict'
 
 describe('myApp.consejoFacultadHome module', function() {
 
-  beforeEach(module('myApp.consejoFacultadHome'));
+  beforeEach(module('myApp.consejoFacultadHome'))
 
-  describe('consejoFacultadHome controller', function(){
+  describe('consejoFacultadHome controller', function() {
 
     it('should ....', inject(function($controller) {
       //spec body
-      var $scope = {};
-      var homeCtrl = $controller('ConsejoFacultadHomeCtrl', {$scope: $scope});
+      var $scope = {}
+      var homeCtrl = $controller('ConsejoFacultadHomeCtrl', {
+        $scope: $scope
+      })
       expect(homeCtrl).toBeDefined();
-    }));
+    }))
 
-  });
-});
+  })
+
+})

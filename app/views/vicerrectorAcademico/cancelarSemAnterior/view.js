@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.vicerrectorAcademicoCancelarSemAnterior', ['ngRoute'])
+angular.module('myApp.vicerrectorAcademicoCancelarSemAnterior', ['ngRoute', 'ngResource'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/vicerrectorAcademico/cancelarSemAnterior', {

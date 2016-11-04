@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.retiro', ['ngRoute'])
+angular.module('myApp.retiro', ['ngRoute', 'ngResource'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/estudiante/retiro', {

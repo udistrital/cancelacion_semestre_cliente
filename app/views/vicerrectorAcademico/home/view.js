@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.vicerrectorAcademicoHome', ['ngRoute'])
+angular.module('myApp.vicerrectorAcademicoHome', ['ngRoute', 'ngResource'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/vicerrectorAcademico', {

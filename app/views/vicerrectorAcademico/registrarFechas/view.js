@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.vicerrectorAcademicoRegistrarFechas', ['ngRoute'])
+angular.module('myApp.vicerrectorAcademicoRegistrarFechas', ['ngRoute', 'ngResource'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/vicerrectorAcademico/registrarFechas', {

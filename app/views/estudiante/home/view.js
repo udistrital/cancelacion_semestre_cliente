@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 angular.module('myApp.estudianteHome', ['ngRoute'])
 
@@ -6,10 +6,10 @@ angular.module('myApp.estudianteHome', ['ngRoute'])
   $routeProvider.when('/estudiante', {
     templateUrl: 'views/estudiante/home/view.html',
     controller: 'EstudianteHomeCtrl'
-  });
+  })
 }])
 
 .controller('EstudianteHomeCtrl', ['$scope', function($scope) {
-  $scope.m = {};
+  $scope.m = {}
 
 }])
