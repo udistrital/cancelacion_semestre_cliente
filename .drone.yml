@@ -8,11 +8,11 @@ build:
   test:
     image: node
     commands:
-    - node_modules/.bin/tape 'test/**/*.js'
+    - npm run test-single-run
   build:
     image: node
     commands:
-      - node_modules/.bin/browserify main.js -o bundle.js
+      - 
   package:
     image: alpine
     commands:

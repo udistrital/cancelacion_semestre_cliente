@@ -7,11 +7,11 @@ describe('myApp.home module', function() {
   describe('home controller', function() {
 
     //Ojo hay que hacer esas pruebas.
-    it('should ....', inject(function($controller) {
-      //spec body
-      var homeCtrl = $controller('HomeCtrl')
-      expect(homeCtrl).toBeDefined()
-    }))
+    // it('should ....', inject(function($controller) {
+    //   //spec body
+    //   var homeCtrl = $controller('HomeCtrl')
+    //   expect(homeCtrl).toBeDefined()
+    // }))
 
   })
 
