@@ -1,23 +1,12 @@
 {
-  "name": "angular-seed",
+  "name": "cancelacion_semestre_cliente",
   "private": true,
-  "version": "0.0.0",
-  "description": "A starter project for AngularJS",
-  "repository": "https://github.com/angular/angular-seed",
-  "license": "MIT",
-  "devDependencies": {
-    "bower": "^1.7.7",
-    "http-server": "^0.9.0",
-    "jasmine-core": "^2.4.1",
-    "karma": "^0.13.22",
-    "karma-chrome-launcher": "^0.2.3",
-    "karma-firefox-launcher": "^0.1.7",
-    "karma-jasmine": "^0.3.8",
-    "karma-junit-reporter": "^0.4.1",
-    "protractor": "^3.2.2"
-  },
+  "version": "0.0.1",
+  "description": "Cliente en Angular 1, basado en angular-seed https://github.com/angular/angular-seed",
+  "repository": "https://github.com/udistrital/cancelacion_semestre_cliente",
+  "license": "GPLv3.0",
   "scripts": {
-    "run": "sudo systemctl start nginx && sudo systemctl start docker && sudo docker start 9a2e3ad0056f && cd $GOPATH/src/github.com/juusechec/oas_be_cancelacion_semestre; bee run",	  
+    "deploy": "sudo systemctl start nginx && sudo systemctl start docker && sudo docker start 9a2e3ad0056f && cd $GOPATH/src/github.com/juusechec/oas_be_cancelacion_semestre; bee run",
     "postinstall": "bower install",
 
     "prestart": "npm install",
@@ -34,5 +23,16 @@
     "protractor": "protractor e2e-tests/protractor.conf.js",
 
     "update-index-async": "node -e \"var fs=require('fs'),indexFile='app/index-async.html',loaderFile='app/bower_components/angular-loader/angular-loader.min.js',loaderText=fs.readFileSync(loaderFile,'utf-8').split(/sourceMappingURL=angular-loader.min.js.map/).join('sourceMappingURL=bower_components/angular-loader/angular-loader.min.js.map'),indexText=fs.readFileSync(indexFile,'utf-8').split(/\\/\\/@@NG_LOADER_START@@[\\s\\S]*\\/\\/@@NG_LOADER_END@@/).join('//@@NG_LOADER_START@@\\n'+loaderText+'    //@@NG_LOADER_END@@');fs.writeFileSync(indexFile,indexText);\""
+  },
+  "devDependencies": {
+    "bower": "^1.7.7",
+    "http-server": "^0.9.0",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.8",
+    "karma-junit-reporter": "^0.4.1",
+    "protractor": "^3.2.2"
   }
 }
