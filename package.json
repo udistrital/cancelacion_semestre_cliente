@@ -7,7 +7,7 @@
   "license": "GPLv3.0",
   "scripts": {
     "deploy": "sudo systemctl start nginx && sudo systemctl start docker && sudo docker start 9a2e3ad0056f && cd $GOPATH/src/github.com/juusechec/oas_be_cancelacion_semestre; bee run",
-    "postinstall": "bower install",
+    "postinstall": "bower install --allow-root",
     "prestart": "npm install",
     "start": "http-server -a localhost -p 8000 -c-1 ./app",
     "pretest": "npm install",
