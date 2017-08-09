@@ -1,3 +1,5 @@
+[![Build Status Travis CI](https://travis-ci.org/udistrital/cancelacion_semestre_cliente.svg?branch=master)](https://travis-ci.org/udistrital/cancelacion_semestre_cliente)
+
 # oas_cancelacion_semestre
 Este proyecto se realiza para que los Roles puedan:
 
@@ -23,21 +25,24 @@ Este proyecto se realiza para que los Roles puedan:
 
 # Dependencias
 -----------------------------
-- Node.js: https://nodejs.org/en/download/
-- npm: https://www.npmjs.com/
-- Bower: https://bower.io/#install-bower
+- Node.js: ^6.10.3  https://nodejs.org/en/download/
+- npm: ^3.10.10 https://www.npmjs.com/
+
+# Otros usados
+-----------------------------
+- Bower: https://bower.io/#install-bower [ver][1]
 
 Para desarrollar u obtener localmente se puede ejecutar:
 1) Clonar el repositorio:
 ```bash
-$ git clone --depth=1 https://github.com/udistrital/cancelacion_semestre_cliente
+git clone --depth=1 https://github.com/udistrital/cancelacion_semestre_cliente
 ```
 
 2) Ingresar al directorio y resolver los requerimientos de desarrollo del api JS.
 ```bash
 cd cancelacion_semestre_cliente
 npm install
-npm postinstall
+npm run postinstall
 ```
 
 3) Ejecutar pruebas (ver https://github.com/angular/angular-seed.git):
@@ -60,3 +65,6 @@ npm run deploy # se debe cambiar!
 * Basado en Angular Seed https://github.com/angular/angular-seed.git
 * Viene pre configurado con pruebas unitarias. Estos están escritos en el Jasmine https://jasmine.github.io, se ejecuta con el Karma Test Runner https://karma-runner.github.io/1.0/index.html.
 * Uliliza beego como framework de desarrollo para el back-end. https://github.com/juusechec/oas_be_cancelacion_semestre
+
+# REFERENCIAS
+[1]: npm lo instala
