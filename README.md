@@ -30,7 +30,7 @@ Este proyecto se realiza para que los Roles puedan:
 
 # Otros usados
 -----------------------------
-- Bower: https://bower.io/#install-bower [ver][1]
+- Bower: https://bower.io/#install-bower [npm lo instala][1]
 
 Para desarrollar u obtener localmente se puede ejecutar:
 1) Clonar el repositorio:
@@ -67,4 +67,4 @@ npm run deploy # se debe cambiar!
 * Uliliza beego como framework de desarrollo para el back-end. https://github.com/juusechec/oas_be_cancelacion_semestre
 
 # REFERENCIAS
-[1]: npm lo instala
+[1]: https://bower.io/#install-bower

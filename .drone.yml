@@ -6,8 +6,7 @@ build:
   test:
     image: node
     commands:
-      - echo npm run test-single-run
-      - echo jorge deshabilito porque esta usando chromedriver no phanthomjs
+      - npm run test-single-run
   build:
     image: node
     commands:
