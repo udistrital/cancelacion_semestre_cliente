@@ -3,6 +3,7 @@ build:
     image: node
     commands:
       - npm install
+      - npm run postinstall
   test:
     image: node
     commands:
