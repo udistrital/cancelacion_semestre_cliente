@@ -1,0 +1,33 @@
+<h1>Lista de Peticiones</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Tipo</th>
+            <th>Estado</th>
+            <th>Fecha Solicitud</th>
+            <th>Fecha Aprobación</th>
+            <th>Id Estudiante</th>
+            <th>Motivo</th>
+            <th>Motivo Estado Aprobado</th>
+            <th>Num Folios</th>
+            <th>Observaciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="row in m">
+            <td>{{ row.Id }}</td>
+            <td>{{ row.IdTipo.Tipo }}</td>
+            <td>{{ row.IdEstado.Estado }}</td>
+            <td>{{ row.FechaSolicitud }}</td>
+            <td>{{ row.FechaAprobacion }}</td>
+            <td>{{ row.IdEstudiante }}</td>
+            <td>{{ row.Motivo }}</td>
+            <td>{{ row.MotivoEstadoAprobado }}</td>
+            <td>{{ row.NumFoliosAnexados }}</td>
+            <td>{{ row.Observaciones }}</td>
+            <!-- <td>{{ row.Uid }}</td> -->
+        </tr>
+    </tbody>
+</table>
+<a class="btn btn-info" href="#!/estudiante">Volver</a>

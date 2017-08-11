@@ -18,5 +18,6 @@
     "angular-formly-templates-bootstrap": "~6.3.2",
     "angular-cookies": "~1.6.5",
     "angular-resource": "~1.6.5"
-  }
+  },
+  "appPath": "app"
 }
