@@ -127,7 +127,7 @@ module.exports = function(grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= yeoman.app %>/scripts/{,*/}*.js'
+          '<%= yeoman.app %>/{,*/}*.js'
         ]
       },
       test: {
@@ -140,7 +140,7 @@ module.exports = function(grunt) {
 
     //Documentation
     ngdocs: {
-      all: ['<%= yeoman.app %>/scripts/**/*.js']
+      all: ['<%= yeoman.app %>/**/*.js']
     },
 
     // Make sure code styles are up to par
@@ -152,7 +152,7 @@ module.exports = function(grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= yeoman.app %>/scripts/{,*/}*.js'
+          '<%= yeoman.app %>/{,*/}*.js'
         ]
       },
       test: {
@@ -233,9 +233,9 @@ module.exports = function(grunt) {
     filerev: {
       dist: {
         src: [
-          '<%= yeoman.dist %>/scripts/{,*/}*.js',
-          '<%= yeoman.dist %>/styles/{,*/}*.css',
-          '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+          '<%= yeoman.dist %>/{,*/}*.js',
+          '<%= yeoman.dist %>/{,*/}*.css',
+          '<%= yeoman.dist %>/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
           '<%= yeoman.dist %>/styles/fonts/*'
         ]
       }
@@ -268,8 +268,8 @@ module.exports = function(grunt) {
       options: {
         assetsDirs: [
           '<%= yeoman.dist %>',
-          '<%= yeoman.dist %>/images',
-          '<%= yeoman.dist %>/styles'
+          '<%= yeoman.dist %>',
+          '<%= yeoman.dist %>'
         ],
         patterns: {
           js: [
@@ -349,7 +349,7 @@ module.exports = function(grunt) {
         options: {
           module: 'financieraClienteApp',
           htmlmin: '<%= htmlmin.dist.options %>',
-          usemin: 'scripts/scripts.js'
+          usemin: 'scripts.js'
         },
         cwd: '<%= yeoman.app %>',
         src: 'views/{,*/}*.html',
@@ -430,8 +430,8 @@ module.exports = function(grunt) {
       },
       styles: {
         expand: true,
-        cwd: '<%= yeoman.app %>/styles',
-        dest: '.tmp/styles/',
+        cwd: '<%= yeoman.app %>/',
+        dest: '.tmp/',
         src: '{,*/}*.css'
       }
     },

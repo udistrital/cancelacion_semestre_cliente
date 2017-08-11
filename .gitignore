@@ -6,4 +6,8 @@ tmp
 .DS_Store
 .idea
 package-*
+
+# Grunt
 /dist
+/.tmp
+/npm-debug.log
