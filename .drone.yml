@@ -11,13 +11,12 @@ build:
   build:
     image: node
     commands:
-      - echo jorge construir aqui
+      - npm run build
   package:
     image: alpine
     commands:
-      - echo tar cf package-$$BRANCH-$${COMMIT:0:7}-$$BUILD_NUMBER.tar index.html bundle.js
-      - echo gzip package-$$BRANCH-$${COMMIT:0:7}-$$BUILD_NUMBER.tar
-      - echo jorge deshabilito esto porque en este punto index.html no se ha creado entonces falla
+      - tar cf package-$$BRANCH-$${COMMIT:0:7}-$$BUILD_NUMBER.tar dist
+      - gzip package-$$BRANCH-$${COMMIT:0:7}-$$BUILD_NUMBER.tar
       - echo jorge prueba que funcione primero con "drone exec" antes de hacer push
 
 # al hacer esto el directorio node_modules queda cacheado en el server de CI y no hay que bajar todo cada vez
