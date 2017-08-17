@@ -46,4 +46,4 @@ notify:
         "chat_id": "-129350403",
         "parse_mode": "Markdown",
         "text": "`{{repo.full_name}}` [{{uppercase build.status}}]({{build.link_url}}) `{{build.branch}}`@{{truncate build.commit 7}}"
-}
+      }
