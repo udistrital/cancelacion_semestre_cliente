@@ -347,7 +347,7 @@ module.exports = function(grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'financieraClienteApp',
+          module: 'myApp',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts.js'
         },
@@ -492,13 +492,13 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'wiredep',
+    //'wiredep',
     'useminPrepare',
     'concurrent:dist',
     'postcss',
-    'ngtemplates',
+    // 'ngtemplates',
     'concat',
-    'ngAnnotate',
+    //'ngAnnotate',
     'copy:dist',
     'cdnify',
     'cssmin',
